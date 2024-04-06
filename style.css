@@ -49,3 +49,9 @@ button {
     justify-content: end;
     padding: 5px;
 }
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
