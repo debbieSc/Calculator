@@ -18,13 +18,13 @@ body {
     align-items: center;
 }
 
-.zero {
+#zero {
     width: 230px;
     height: 110px;
     
 }
 
-.decimal, .zero, .equalsSign {
+#decimal, #zero, #equalsSign {
     margin-bottom: 15px;
 }
 
