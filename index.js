@@ -15,7 +15,7 @@ const add = function(a, b) {
   
    
 const multiply = function(a, b) {
-    console.log(a * b)
+    return a * b
 };
 
 
@@ -44,4 +44,4 @@ const operate = function(initNumber, oper, lastNumber) {
 
   }
 
-  operate(23, "times", 24)
+ 
