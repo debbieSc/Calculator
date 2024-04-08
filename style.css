@@ -6,6 +6,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     align-items: center;
+    
 }
 
 .container {
@@ -16,11 +17,13 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    border-radius: 25px;
 }
 
 #zero {
     width: 230px;
     height: 110px;
+    border-radius: 25px;
     
 }
 
@@ -31,8 +34,9 @@ body {
 #equalsSign {
     background-color: rgb(255, 124, 227);
 }
- #ac, #negNum, #percent, #divideSign, #multiplySign, #subtractSign, #plusSign {
+ #ac, #negNum, #del, #divideSign, #multiplySign, #subtractSign, #plusSign {
     background-color: rgb(196, 255, 255);
+    
  }
  
  button {
@@ -41,6 +45,7 @@ body {
     margin: 5px;
     background-color: rgb(222, 165, 236);
     font-size: 24px;
+    border-radius: 25px;
 }
 
 .display {
@@ -55,6 +60,7 @@ body {
     align-items: center;
     justify-content: end;
     padding: 5px;
+    border-radius: 25px;
 }
 
 .buttons {
