@@ -1,8 +1,3 @@
-let firstNumber = 0;
-let secondNumber = 0;
-let numberOperator;
-let array = [];
-let secondArray = [];
 let display = document.querySelector(".display")
 let initialNumber = 0;
 let endNumber = 0;
@@ -10,22 +5,40 @@ let symbol;
 let extraNumber = 0;
 let startNumber = 0;
 let active = "off";
-let savenum = 0;
+let saveNum = 0;
+let checkLength = 0;
+let cutNum = 0;
 
 const add = function(a, b) {
-    display.textContent = a + b;
+    initialNumber = a + b;
+    if (initialNumber.toString().length > 12) {
+        display.textContent = parseFloat(initialNumber.toString().substring(0,12))
+    } else {
+        display.textContent = initialNumber
+    }
   };
   
 
 
   const subtract = function(a, b) {
-    display.textContent = a - b;
-  };
+    initialNumber = a - b;
+    if (initialNumber.toString().length > 12) {
+        display.textContent = parseFloat(initialNumber.toString().substring(0,12))
+    } else {
+        display.textContent = initialNumber
+    }
+};
+ 
 
   
    
 const multiply = function(a, b) {
-    display.textContent = a * b
+    initialNumber = a * b;
+            if (initialNumber.toString().length > 12) {
+                display.textContent = parseFloat(initialNumber.toString().substring(0,12))
+            } else {
+                display.textContent = initialNumber
+            }
 };
 
 
@@ -33,10 +46,15 @@ const multiply = function(a, b) {
 const divide = function(a, b) {
     if (b == 0) {
         display.textContent = "well that's silly!"
-    } else {
-    display.textContent = a / b;
-    }
+    } else { 
+        initialNumber = a / b;
+        if (initialNumber.toString().length > 12) {
+            display.textContent = parseFloat(initialNumber.toString().substring(0,12))
+        } else {
+            display.textContent = initialNumber
+        }
 };
+}
 
 
 const operate = function(initNumber, oper, lastNumber) {
@@ -72,12 +90,12 @@ const operate = function(initNumber, oper, lastNumber) {
         endNumber = 0
     }
     else if (button.id == "negNum") {
-        savenum = parseInt(display.textContent)
+        saveNum = parseInt(display.textContent)
 
-            if(savenum < 0){
-                display.textContent = savenum * -1
+            if(saveNum < 0){
+                display.textContent = saveNum * -1
             } else {
-                display.textContent = "-" + savenum
+                display.textContent = "-" + saveNum
             }
     
     } 
@@ -86,8 +104,13 @@ const operate = function(initNumber, oper, lastNumber) {
        startNumber = parseFloat(endNumber) + parseFloat(display.textContent)
        
         clearScreen(startNumber)
+        
+        if (startNumber.toString().length > 10) {
+            display.textContent = parseFloat(startNumber.toString().substring(0,12))
+        } else {
+            display.textContent = startNumber
+        }
 
-        display.textContent = startNumber
         active = "on"
        
        symbol = "plus"
@@ -107,7 +130,11 @@ const operate = function(initNumber, oper, lastNumber) {
 
         clearScreen(startNumber)
  
-         display.textContent = startNumber
+        if (startNumber.toString().length > 10) {
+            display.textContent = parseFloat(startNumber.toString().substring(0,12))
+        } else {
+            display.textContent = startNumber
+        }
          active = "on"
          symbol = "times"
           
@@ -127,7 +154,11 @@ const operate = function(initNumber, oper, lastNumber) {
 
         clearScreen(startNumber)
  
-         display.textContent = startNumber
+        if (startNumber.toString().length > 10) {
+            display.textContent = parseFloat(startNumber.toString().substring(0,12))
+        } else {
+            display.textContent = startNumber
+        }
          active = "on"
          symbol = "minus"
           
@@ -145,11 +176,9 @@ const operate = function(initNumber, oper, lastNumber) {
 
         clearScreen(startNumber)
 
-        if (startNumber.toString().includes(".")) {
- 
-         display.textContent = parseFloat(startNumber).toFixed(3)
-        }
-        else {
+        if (startNumber.toString().length > 10) {
+            display.textContent = parseFloat(startNumber.toString().substring(0,12))
+        } else {
             display.textContent = startNumber
         }
          active = "on"
@@ -166,6 +195,16 @@ const operate = function(initNumber, oper, lastNumber) {
 
     } 
 
+    else if (button.id == "del") {
+        cutNum = display.textContent
+
+        if(cutNum.toString().length <= 1) {
+            display.textContent = 0
+        } else {
+        display.textContent = parseFloat(cutNum.toString().substring(0, cutNum.length-1))
+        }
+    }
+
   }))
 
 
@@ -177,9 +216,17 @@ const operate = function(initNumber, oper, lastNumber) {
             return
            }
            else {
+            
+            
             display.textContent += button.textContent
+
+
+            }
+
+
+
            }
-        }
+        
        
         else if (display.textContent == 0){
             display.textContent = button.textContent
@@ -189,8 +236,15 @@ const operate = function(initNumber, oper, lastNumber) {
         else  {
 
             if(active == "off") {
+
+                checkLength = display.textContent
+
+            if (checkLength.length >= 12){
+                return;
+            } else {
             
                 display.textContent += button.textContent
+            }
             }
             else {
                 display.textContent = button.textContent
