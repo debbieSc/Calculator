@@ -10,27 +10,28 @@ let symbol;
 let extraNumber = 0;
 let startNumber = 0;
 let active = "off";
+let savenum = 0;
 
 const add = function(a, b) {
-    return a + b;
+    display.textContent = a + b;
   };
   
 
 
   const subtract = function(a, b) {
-      return a - b;
+    display.textContent = a - b;
   };
 
   
    
 const multiply = function(a, b) {
-    return a * b
+    display.textContent = a * b
 };
 
 
 
 const divide = function(a, b) {
-    return a / b;
+    display.textContent = a / b;
 };
 
 
@@ -64,9 +65,10 @@ const operate = function(initNumber, oper, lastNumber) {
         display.textContent = 0
         startNumber = 0
         extraNumber = 0
+        endNumber = 0
     }
-    else if (button.id == "negNum"){
-        let savenum = parseInt(display.textContent)
+    else if (button.id == "negNum") {
+        savenum = parseInt(display.textContent)
 
             if(savenum < 0){
                 display.textContent = savenum * -1
@@ -77,7 +79,7 @@ const operate = function(initNumber, oper, lastNumber) {
     } 
     else if (button.id == "plusSign") {
 
-       startNumber = parseInt(endNumber) + parseInt(display.textContent)
+       startNumber = parseFloat(endNumber) + parseFloat(display.textContent)
        
         clearScreen(startNumber)
 
@@ -88,18 +90,69 @@ const operate = function(initNumber, oper, lastNumber) {
          
 
     } 
+    else if (button.id == "multiplySign") {
 
+        if(endNumber !== 0) {
 
+        startNumber = parseFloat(endNumber) * parseFloat(display.textContent)
+        }
 
+        else {
+            startNumber = display.textContent
+        }
 
+        clearScreen(startNumber)
+ 
+         display.textContent = startNumber
+         active = "on"
+         symbol = "times"
+          
+ 
+     } 
 
+     else if (button.id == "subtractSign") {
 
+        if(endNumber !== 0) {
+
+        startNumber = parseFloat(endNumber) - parseFloat(display.textContent)
+        }
+
+        else {
+            startNumber = display.textContent
+        }
+
+        clearScreen(startNumber)
+ 
+         display.textContent = startNumber
+         active = "on"
+         symbol = "minus"
+          
+ 
+     } else if (button.id == "divideSign") {
+
+        if(endNumber !== 0) {
+
+        startNumber = parseFloat(endNumber) / parseFloat(display.textContent)
+        }
+
+        else {
+            startNumber = display.textContent
+        }
+
+        clearScreen(startNumber)
+ 
+         display.textContent = startNumber
+         active = "on"
+         symbol = "share"
+          
+ 
+     } 
     
     else if (button.id == "equalsSign") {
 
-        extraNumber = parseInt(display.textContent)
-
-           operate(startNumber, symbol, extraNumber)
+        extraNumber = parseFloat(display.textContent)
+            operate(startNumber, symbol, extraNumber)
+        endNumber = 0
 
     } 
 
