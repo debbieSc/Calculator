@@ -161,13 +161,22 @@ const operate = function(initNumber, oper, lastNumber) {
 
     buttonChoice.forEach(button => button.addEventListener("click", () => {
 
+
+        if (button.id == "decimal") {
+           if (display.textContent.includes(".")) {
+            return
+           }
+           else {
+            display.textContent += button.textContent
+           }
+        }
        
-        if (display.textContent == 0){
+        else if (display.textContent == 0){
             display.textContent = button.textContent
         } 
         
         
-        else {
+        else  {
 
             if(active == "off") {
             
