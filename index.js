@@ -31,7 +31,11 @@ const multiply = function(a, b) {
 
 
 const divide = function(a, b) {
+    if (b == 0) {
+        display.textContent = "well that's silly!"
+    } else {
     display.textContent = a / b;
+    }
 };
 
 
@@ -140,8 +144,14 @@ const operate = function(initNumber, oper, lastNumber) {
         }
 
         clearScreen(startNumber)
+
+        if (startNumber.toString().includes(".")) {
  
-         display.textContent = startNumber
+         display.textContent = parseFloat(startNumber).toFixed(3)
+        }
+        else {
+            display.textContent = startNumber
+        }
          active = "on"
          symbol = "share"
           
